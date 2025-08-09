@@ -23,6 +23,26 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "detox": "^20.12.0",
+    "jest-circus": "^29.5.3"
+  },
+  "detox": {
+    "testRunner": "jest",
+    "runnerConfig": "e2e/config.json",
+    "configurations": {
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.attached"
+      }
+    }
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "e2e:build": "detox build --configuration android.emu.debug",
+    "e2e:test": "detox test --configuration android.emu.debug"
   }
 }
