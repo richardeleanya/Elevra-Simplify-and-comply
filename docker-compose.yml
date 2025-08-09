@@ -42,6 +42,8 @@ services:
       NODE_ENV: production
       API_URL: http://api:3000
       PORT: 3001
+      SENTRY_DSN: "${SENTRY_DSN:-}"
+      NEXT_PUBLIC_SENTRY_DSN: "${NEXT_PUBLIC_SENTRY_DSN:-}"
     ports:
       - "3001:3000"
     depends_on:
