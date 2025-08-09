@@ -18,7 +18,9 @@ import { SalaryPolicy } from '../../domain/entities/salary-policy.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { ApiTags, ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('Payroll')
 @Controller('payrolls')
 export class PayrollController {
   constructor(
@@ -29,6 +31,8 @@ export class PayrollController {
     private readonly listPayslips: ListPayslipsService,
   ) {}
 
+  @ApiOperation({ summary: 'Calculate a payslip (dry run)' })
+  @ApiResponse({ status: 201, description: 'Returns payslip calculation result' })
   @Post('calculate')
   async calculate(@Body() dto: CalculatePayslipDto) {
     const policy = await this.salaryPolicyRepo.findOne({
@@ -41,12 +45,17 @@ export class PayrollController {
     return result;
   }
 
+  @ApiOperation({ summary: 'Generate and persist a payslip' })
+  @ApiResponse({ status: 201, description: 'Returns saved payslip' })
   @Post()
   async generate(@Body() dto: GeneratePayslipDto) {
     const payslip = await this.generatePayslip.execute(dto);
     return payslip;
   }
 
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'List payslips for current or specified user' })
+  @ApiResponse({ status: 200, description: 'Returns list of payslips' })
   @UseGuards(JwtAuthGuard)
   @Get()
   async list(@Query('userId') userId: string, @Req() req) {
