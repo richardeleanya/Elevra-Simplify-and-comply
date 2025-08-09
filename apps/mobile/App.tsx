@@ -6,12 +6,16 @@ import HomeScreen from './screens/HomeScreen';
 import PayrollCalculateScreen from './screens/PayrollCalculateScreen';
 import PayrollListScreen from './screens/PayrollListScreen';
 import ComplianceScreen from './screens/ComplianceScreen';
+import PensionScreen from './screens/PensionScreen';
+import RtiScreen from './screens/RtiScreen';
 
 export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   PayrollCalculate: undefined;
   PayrollList: undefined;
+  Pension: undefined;
+  RTI: undefined;
   Compliance: undefined;
 };
 
@@ -25,6 +29,8 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="PayrollCalculate" component={PayrollCalculateScreen} />
         <Stack.Screen name="PayrollList" component={PayrollListScreen} />
+        <Stack.Screen name="Pension" component={PensionScreen} />
+        <Stack.Screen name="RTI" component={RtiScreen} />
         <Stack.Screen name="Compliance" component={ComplianceScreen} />
       </Stack.Navigator>
     </NavigationContainer>

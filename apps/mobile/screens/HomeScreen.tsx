@@ -9,6 +9,8 @@ export default function HomeScreen({ navigation }: any) {
       <View style={styles.nav}>
         <Button title="Calculate Payslip" onPress={() => navigation.navigate('PayrollCalculate')} />
         <Button title="View Payslips" onPress={() => navigation.navigate('PayrollList')} />
+        <Button title="Pensions" onPress={() => navigation.navigate('Pension')} />
+        <Button title="RTI" onPress={() => navigation.navigate('RTI')} />
         <Button title="Compliance" onPress={() => navigation.navigate('Compliance')} />
       </View>
     </View>

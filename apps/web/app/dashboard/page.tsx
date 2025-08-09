@@ -20,6 +20,12 @@ export default function DashboardPage() {
             <Button component={Link} href="/dashboard/payroll/list" color="inherit" aria-label="Payroll List">
               Payroll List
             </Button>
+            <Button component={Link} href="/dashboard/pensions" color="inherit" aria-label="Pensions">
+              Pensions
+            </Button>
+            <Button component={Link} href="/dashboard/rti" color="inherit" aria-label="RTI">
+              RTI
+            </Button>
             <Button component={Link} href="/dashboard/compliance" color="inherit" aria-label="Compliance">
               Compliance
             </Button>
