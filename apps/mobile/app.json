@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Simplify & Comply",
+    "slug": "simplify-comply-mobile",
+    "version": "0.1.0",
+    "platforms": ["ios", "android"],
+    "jsEngine": "hermes",
+    "assetBundlePatterns": ["**/*"]
+  }
+}
