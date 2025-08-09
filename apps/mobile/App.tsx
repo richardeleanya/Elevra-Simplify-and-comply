@@ -5,12 +5,14 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import PayrollCalculateScreen from './screens/PayrollCalculateScreen';
 import PayrollListScreen from './screens/PayrollListScreen';
+import ComplianceScreen from './screens/ComplianceScreen';
 
 export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   PayrollCalculate: undefined;
   PayrollList: undefined;
+  Compliance: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -23,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="PayrollCalculate" component={PayrollCalculateScreen} />
         <Stack.Screen name="PayrollList" component={PayrollListScreen} />
+        <Stack.Screen name="Compliance" component={ComplianceScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
