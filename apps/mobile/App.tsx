@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/react-native';
+import Constants from 'expo-constants';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,6 +10,12 @@ import PayrollListScreen from './screens/PayrollListScreen';
 import ComplianceScreen from './screens/ComplianceScreen';
 import PensionScreen from './screens/PensionScreen';
 import RtiScreen from './screens/RtiScreen';
+
+// Initialize Sentry
+Sentry.init({
+  dsn: Constants?.expoConfig?.extra?.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
 
 export type RootStackParamList = {
   Login: undefined;
