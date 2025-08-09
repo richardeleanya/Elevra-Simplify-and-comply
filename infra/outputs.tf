@@ -24,3 +24,19 @@ output "rds_endpoint" {
 output "rds_port" {
   value = module.rds.db_instance_port
 }
+
+output "api_jwt_secret_ssm_name" {
+  value = aws_ssm_parameter.api_jwt_secret.name
+}
+output "api_db_password_ssm_name" {
+  value = aws_ssm_parameter.api_db_password.name
+}
+output "api_sentry_dsn_ssm_name" {
+  value = aws_ssm_parameter.api_sentry_dsn.name
+}
+output "web_sentry_dsn_ssm_name" {
+  value = aws_ssm_parameter.web_sentry_dsn.name
+}
+output "mobile_sentry_dsn_ssm_name" {
+  value = aws_ssm_parameter.mobile_sentry_dsn.name
+}

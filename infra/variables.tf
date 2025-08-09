@@ -52,6 +52,30 @@ variable "db_password" {
   sensitive   = true
 }
 
+variable "api_jwt_secret" {
+  description = "API JWT secret"
+  type        = string
+  sensitive   = true
+}
+
+variable "api_sentry_dsn" {
+  description = "API Sentry DSN"
+  type        = string
+  sensitive   = true
+}
+
+variable "web_sentry_dsn" {
+  description = "Web Sentry DSN"
+  type        = string
+  sensitive   = true
+}
+
+variable "mobile_sentry_dsn" {
+  description = "Mobile Sentry DSN"
+  type        = string
+  sensitive   = true
+}
+
 variable "ssh_key_name" {
   description = "SSH key name for EKS nodes"
   type        = string
