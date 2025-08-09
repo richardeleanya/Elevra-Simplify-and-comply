@@ -28,6 +28,7 @@ services:
       DB_PASSWORD: simplify
       DB_DATABASE: simplify
       JWT_SECRET: "localdevsecret"
+      SENTRY_DSN: "${SENTRY_DSN:-}" # Set this in your .env for Sentry
     ports:
       - "3000:3000"
     depends_on:
