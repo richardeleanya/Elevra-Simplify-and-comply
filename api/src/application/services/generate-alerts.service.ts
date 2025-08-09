@@ -4,12 +4,15 @@ import { Repository } from 'typeorm';
 import { Alert, Severity } from '../../domain/entities/alert.entity';
 import { RawAlertDto } from '../dto/raw-alert.dto';
 import { ComplianceHealthVO } from '../../domain/value-objects/compliance-health.vo';
+import { Counter, InjectMetric } from '@willsoto/nestjs-prometheus';
 
 @Injectable()
 export class GenerateAlertsService {
   constructor(
     @InjectRepository(Alert)
     private readonly alertRepo: Repository<Alert>,
+    @InjectMetric('alerts_generated_total')
+    private readonly alertsGenerated: Counter<string>
   ) {}
 
   async generateAndScore(rawUpdates: RawAlertDto[]): Promise<{ alerts: Alert[]; health: ComplianceHealthVO }> {
@@ -22,6 +25,9 @@ export class GenerateAlertsService {
       return alert;
     });
     const saved = await this.alertRepo.save(toSave);
+
+    // Prometheus: count generated alerts
+    this.alertsGenerated.inc(toSave.length);
 
     // Recalculate compliance health
     const allAlerts = await this.alertRepo.find();

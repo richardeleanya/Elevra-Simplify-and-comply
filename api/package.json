@@ -34,7 +34,9 @@
     "csurf": "^1.11.0",
     "uuid": "^9.0.0",
     "@sentry/node": "^7.96.0",
-    "@sentry/tracing": "^7.96.0"
+    "@sentry/tracing": "^7.96.0",
+    "@willsoto/nestjs-prometheus": "^5.2.0",
+    "prom-client": "^14.1.0"
   },
   "devDependencies": {
     "@nestjs/testing": "^10.2.0",
